@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Loan Prediction Result</title>
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+<h1>{{ result }}</h1>
+
+<div class="result-card">
+
+    <div class="metric">
+        <span class="metric-label">Approval Probability</span>
+        <span class="metric-value">{{ probability }}%</span>
+    </div>
+
+    <div class="metric">
+        <span class="metric-label">Risk Level</span>
+        <span class="metric-value">{{ risk_level }}</span>
+    </div>
+
+    <div class="metric">
+        <span class="metric-label">Estimated EMI</span>
+        <span class="metric-value">₹ {{ emi }}</span>
+    </div>
+
+</div>
+
+<br><br>
+
+<canvas id="loanChart"></canvas>
+
+<br><br>
+
+<div class="result-card">
+
+    <h2>AI Loan Analysis</h2>
+
+    <div style="
+        background:#1f2937;
+        color:white;
+        padding:20px;
+        border-radius:12px;
+        margin-top:15px;
+        text-align:left;
+        line-height:1.8;
+        white-space:pre-wrap;
+    ">
+        {{ ai_analysis }}
+    </div>
+
+</div>
+
+<br><br>
+
+<a href="/">
+    <button>Apply Again</button>
+</a>
+
+
+</div>
+
+<script>
+
+const ctx = document.getElementById('loanChart');
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: [
+            'Approval Probability',
+            'Credit Score',
+            'Financial Strength'
+        ],
+        datasets: [{
+            label: 'Loan Analysis',
+            data: [
+                Number("{{ probability }}"),
+                Number("{{ credit_score }}") / 9,
+                Number("{{ financial_strength }}")
+            ]
+        }]
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Approval Prediction System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Loan Approval Prediction System</h1>
+
+    <form action="/predict" method="POST">
+
+        <h2>Personal Information</h2>
+
+        <input type="number" name="age" placeholder="Age" required>
+
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option>Male</option>
+            <option>Female</option>
+        </select>
+
+        <select name="marital_status" required>
+            <option value="">Marital Status</option>
+            <option>Single</option>
+            <option>Married</option>
+        </select>
+
+        <input type="number" name="dependents" placeholder="Dependents" required>
+
+        <input type="text" name="education" placeholder="Education Level" required>
+
+        <h2>Employment Details</h2>
+
+        <input type="text" name="employment" placeholder="Employment Type" required>
+
+        <input type="text" name="company_type" placeholder="Company Type" required>
+
+        <input type="number" name="work_exp" placeholder="Work Experience (Years)" required>
+
+        <h2>Financial Details</h2>
+
+        <input type="number" step="0.01" name="monthly_income" placeholder="Monthly Income" required>
+
+        <input type="number" name="existing_loans" placeholder="Existing Loans" required>
+
+        <input type="number" step="0.01" name="existing_emi" placeholder="Existing EMI" required>
+
+        <input type="number" name="credit_score" placeholder="Credit Score" required>
+
+        <select name="credit_history" required>
+            <option value="">Credit History</option>
+            <option>Good</option>
+            <option>Bad</option>
+        </select>
+
+        <input type="number" step="0.01" name="bank_balance" placeholder="Bank Balance" required>
+
+        <h2>Loan Details</h2>
+
+        <input type="number" step="0.01" name="loan_amount" placeholder="Loan Amount Requested" required>
+
+        <input type="text" name="loan_purpose" placeholder="Loan Purpose" required>
+
+        <input type="number" name="loan_term" placeholder="Loan Term (Years)" required>
+
+        <input type="number" step="0.01" name="interest_rate" placeholder="Interest Rate (%)" required>
+
+        <button type="submit">
+            Predict Loan Approval
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
